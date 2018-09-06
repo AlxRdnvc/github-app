@@ -5,7 +5,7 @@
                 <slot>LEFT</slot>
             </div>
             <div class="center">
-                <h2>{{title}}</h2>
+                {{title}}
             </div>
             <div class="right">
                 <slot>RIGHT</slot>

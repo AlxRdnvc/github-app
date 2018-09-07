@@ -12,9 +12,9 @@
         </div>
         <div class="right">
             <slot name="right">
-                    <v-ons-button>
-                        <v-ons-icon icon="md-settings"></v-ons-icon>
-                    </v-ons-button>
+                <v-ons-button>
+                    <v-ons-icon icon="md-settings"></v-ons-icon>
+                </v-ons-button>
             </slot>
         </div>
     </v-ons-toolbar>

@@ -6,7 +6,7 @@ export default class GitHubService {
     }
 
     getRepos (username) {
-        return axios.get('users/${username}/repos')
+        return axios.get(`users/${username}/repos`)
     }
 
 }

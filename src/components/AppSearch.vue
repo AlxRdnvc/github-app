@@ -1,12 +1,10 @@
 <template>
-    <v-ons-input
+    <v-ons-search-input
+        @input="$emit('update:query', $event.target.value)"
         :placeholder="placeholder"
-        style = "
-            background-color: #333;
-            margin-top: 10px;
-            width: 100%;
-        "
-    ></v-ons-input>
+        style = "margin: 10px 0; width: 100%;"
+        :value="query"
+    ></v-ons-search-input>
 </template>
 
 <script>

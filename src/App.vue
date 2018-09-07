@@ -16,10 +16,10 @@
     AppToolbar,
     AppSearch
   },
-  methods: {
-    alert() {
-      this.$ons.notification.alert('This is an Onsen UI alert notification test.');
-      }
+  data(){
+    return {
+      query:''
+    }
   }
 };
 </script>

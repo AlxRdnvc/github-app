@@ -1,17 +1,15 @@
 <template>
-    <v-ons-page>
         <v-ons-toolbar>
             <div class="left">
-                <slot>LEFT</slot>
+                <slot name="left">LEFT</slot>
             </div>
-            <div class="center">
+            <div class="center" style="text-align: center;">
                 {{title}}
             </div>
             <div class="right">
-                <slot>RIGHT</slot>
+                <slot name="right">RIGHT</slot>
             </div>
         </v-ons-toolbar>
-    </v-ons-page>
 </template>
 
 <script>

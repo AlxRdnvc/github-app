@@ -5,22 +5,22 @@
 
     <div class="center">
       <AppSearch :query.sync="query"/>
+      <v-ons-progress-circular indeterminate v-if="isLoading"></v-ons-progress-circular>
+      <v-ons-list>
+      <v-ons-list-header>
+        Repositories of: {{query}}
+      </v-ons-list-header>
+      <v-ons-list-item v-for="(repo, index) in repos" :key="index">
+        <div class="left">
+          <img class="list-item__thumbnail" :src="repo.owner.avatar_url" alt="">
+        </div>
+        <div class="center">
+          <span class="list-item__title">{{repo.name}}</span>
+          <span class="list-item__subtitle">{{repo.description}}</span>
+        </div>
+      </v-ons-list-item>
+      </v-ons-list>
     </div>
-    
-    <v-ons-list>
-    <v-ons-list-header>
-      Repositories of: {{query}}
-    </v-ons-list-header>
-    <v-ons-list-item v-for="(repo, index) in repos" :key="index">
-      <div class="left">
-        <img class="list-item__thumbnail" :src="repo.owner.avatar_url" alt="">
-      </div>
-      <div class="center">
-        <span class="list-item__title">{{repo.name}}</span>
-        <span class="list-item__subtitle">{{repo.description}}</span>
-      </div>
-    </v-ons-list-item>
-    </v-ons-list>
     
   </v-ons-page>
 </template>
@@ -39,14 +39,22 @@
   data(){
     return {
       query:'',
-      repos: ''
+      repos: '',
+      isLoading: false,
     }
   },
   methods: {
     getRepos: debounce(function () {
+      this.isLoading = true
       gitHub.getRepos(this.query)
         .then((response) => {
           this.repos = response.data
+        })
+        .catch((error) => {
+          console.log(error); 
+        })
+        .finally(() => { 
+          this.isLoading = false; 
         })
     }, 500)
   },

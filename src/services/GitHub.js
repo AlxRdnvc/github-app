@@ -6,9 +6,9 @@ export default class GitHubService {
     }
 
     getRepos (username) {
-        return axios.get(`users/${username}/repos`)
+        let accessToken = 'b462e9597c395a21a191046ab7bea2d6d92233d4'
+        return axios.get(`users/${username}/repos`, { headers: {"Authorization" : `Bearer ${accessToken}`} })
     }
-
 }
 
 export const gitHub = new GitHubService();
